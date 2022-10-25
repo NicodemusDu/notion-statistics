@@ -2,7 +2,7 @@
  * @Author: Nicodemus nicodemusdu@gmail.com
  * @Date: 2022-10-22 16:16:27
  * @LastEditors: Nicodemus nicodemusdu@gmail.com
- * @LastEditTime: 2022-10-25 14:07:26
+ * @LastEditTime: 2022-10-25 16:33:10
  * @FilePath: /notion-statistics/pages/index.tsx
  * @Description:
  *
@@ -11,8 +11,21 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+import { urlParse, isEmbedInNotion, getNotionSoDomain, getNotionSiteDomain } from '../lib/notion-embed-access';
+import { useEffect } from 'react';
 
 const Home: NextPage = () => {
+    useEffect(() => {
+        const url = process.env.NEXT_PUBLIC_TARGET_URL || '';
+        console.log(`target url = ${url}, is embed notion: ${isEmbedInNotion(url)}`);
+        console.log(
+            `notion.so = ${getNotionSoDomain('https://www.notion.so/nicodemusdu/fa242578bc2441de97310057192d6962')}`,
+        );
+        console.log(
+            `notion.site = ${getNotionSiteDomain('https://seedao.notion.site/5443fbba0e694306a72d5271a9f1eb34')}`,
+        );
+    });
+
     return (
         <div className="flex min-h-screen flex-col items-center justify-center py-2">
             <Head>
