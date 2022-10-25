@@ -2,7 +2,7 @@
  * @Author: Nicodemus nicodemusdu@gmail.com
  * @Date: 2022-10-25 14:40:30
  * @LastEditors: Nicodemus nicodemusdu@gmail.com
- * @LastEditTime: 2022-10-25 19:38:36
+ * @LastEditTime: 2022-10-25 19:40:19
  * @FilePath: /notion-statistics/lib/notion-embed-access.ts
  * @Description: 判断当前页面是否潜入在notion中
  *
@@ -13,14 +13,14 @@ export function isEmbed() {
 }
 
 export function isEmbedInNotion(targetUrl: string) {
+    const currentUrl = window.top?.location.href || window.parent.location.href;
+    console.log(`local url:\t`, currentUrl);
     if (isEmbed()) {
         // const currentUrlObj = urlParse(window.location.href);
         // const targetUrlObj = urlParse(targetUrl);
         // if (currentUrlObj.scheme === targetUrlObj.scheme && currentUrlObj.host === targetUrlObj.host) {
         //     return true;
         // }
-        const currentUrl = window.top?.location.href || window.parent.location.href;
-        console.log(`local url:\t`, currentUrl);
         const currentNotionDomain = getNotionSiteDomain(currentUrl) || getNotionSoDomain(currentUrl);
         const targetNotionDomain = getNotionSiteDomain(targetUrl) || getNotionSoDomain(targetUrl);
         if (currentNotionDomain && targetNotionDomain && currentNotionDomain === targetNotionDomain) {
