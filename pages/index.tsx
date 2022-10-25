@@ -2,7 +2,7 @@
  * @Author: Nicodemus nicodemusdu@gmail.com
  * @Date: 2022-10-22 16:16:27
  * @LastEditors: Nicodemus nicodemusdu@gmail.com
- * @LastEditTime: 2022-10-25 11:28:50
+ * @LastEditTime: 2022-10-25 14:07:26
  * @FilePath: /notion-statistics/pages/index.tsx
  * @Description:
  *
@@ -66,6 +66,7 @@ const Home: NextPage = () => {
                         <p className="mt-4 text-xl">Instantly deploy your Next.js site to a public URL with Vercel.</p>
                     </a>
                 </div>
+                <iframe src="/posts/notion" width="300" height="380"></iframe>
             </main>
 
             <footer className="flex h-24 w-full items-center justify-center border-t">
