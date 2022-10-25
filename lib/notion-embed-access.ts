@@ -2,7 +2,7 @@
  * @Author: Nicodemus nicodemusdu@gmail.com
  * @Date: 2022-10-25 14:40:30
  * @LastEditors: Nicodemus nicodemusdu@gmail.com
- * @LastEditTime: 2022-10-25 17:44:32
+ * @LastEditTime: 2022-10-25 19:32:16
  * @FilePath: /notion-statistics/lib/notion-embed-access.ts
  * @Description: 判断当前页面是否潜入在notion中
  *
@@ -20,6 +20,7 @@ export function isEmbedInNotion(targetUrl: string) {
         //     return true;
         // }
         const currentUrl = window.location.href;
+        console.log(`local url:\t`, currentUrl);
         const currentNotionDomain = getNotionSiteDomain(currentUrl) || getNotionSoDomain(currentUrl);
         const targetNotionDomain = getNotionSiteDomain(targetUrl) || getNotionSoDomain(targetUrl);
         if (currentNotionDomain && targetNotionDomain && currentNotionDomain === targetNotionDomain) {
@@ -28,6 +29,8 @@ export function isEmbedInNotion(targetUrl: string) {
         // 两种表现形式
         // https://seedao.notion.site/5443fbba0e694306a72d5271a9f1eb34     公开页面
         // https://www.notion.so/seedao/d4377e7963224371b9284061032bd67e   需要访问权限
+    } else {
+        console.log('not embed');
     }
     return false;
 }

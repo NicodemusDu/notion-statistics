@@ -2,7 +2,7 @@
  * @Author: Nicodemus nicodemusdu@gmail.com
  * @Date: 2022-10-22 16:16:27
  * @LastEditors: Nicodemus nicodemusdu@gmail.com
- * @LastEditTime: 2022-10-25 17:50:35
+ * @LastEditTime: 2022-10-25 19:29:25
  * @FilePath: /notion-statistics/pages/index.tsx
  * @Description:
  *
@@ -23,12 +23,6 @@ const Home: NextPage = () => {
         // const url = process.env.NEXT_PUBLIC_TARGET_URL || '';
         const url = error ? '' : data?.name;
         console.log(`target url = ${url}, is embed notion: ${isEmbedInNotion(url)}`);
-        console.log(
-            `notion.so = ${getNotionSoDomain('https://www.notion.so/nicodemusdu/fa242578bc2441de97310057192d6962')}`,
-        );
-        console.log(
-            `notion.site = ${getNotionSiteDomain('https://seedao.notion.site/5443fbba0e694306a72d5271a9f1eb34')}`,
-        );
     }, [data, error]);
 
     return (
