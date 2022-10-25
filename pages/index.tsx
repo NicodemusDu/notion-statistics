@@ -2,7 +2,7 @@
  * @Author: Nicodemus nicodemusdu@gmail.com
  * @Date: 2022-10-22 16:16:27
  * @LastEditors: Nicodemus nicodemusdu@gmail.com
- * @LastEditTime: 2022-10-25 19:47:47
+ * @LastEditTime: 2022-10-25 19:50:28
  * @FilePath: /notion-statistics/pages/index.tsx
  * @Description:
  *
@@ -15,11 +15,9 @@ import { urlParse, isEmbedInNotion, getNotionSoDomain, getNotionSiteDomain } fro
 import { useEffect } from 'react';
 import useSWR from 'swr';
 const Home: NextPage = () => {
-    // const fetcher = (url: string) => fetch(url).then((r) => r.json());
+    const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
-    // const { data, error } = useSWR('/api/hello', fetcher);
-    const data = { name: 'https://nicodemus.notion.site/' };
-    const error = false;
+    const { data, error } = useSWR('/api/hello', fetcher);
 
     useEffect(() => {
         // const url = process.env.NEXT_PUBLIC_TARGET_URL || '';
