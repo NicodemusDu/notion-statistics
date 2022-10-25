@@ -2,7 +2,7 @@
  * @Author: Nicodemus nicodemusdu@gmail.com
  * @Date: 2022-10-25 14:40:30
  * @LastEditors: Nicodemus nicodemusdu@gmail.com
- * @LastEditTime: 2022-10-25 16:37:24
+ * @LastEditTime: 2022-10-25 17:44:32
  * @FilePath: /notion-statistics/lib/notion-embed-access.ts
  * @Description: 判断当前页面是否潜入在notion中
  *
@@ -70,7 +70,6 @@ export function getNotionSiteDomain(ur: string): string | null {
     const parse_url =
         /^(?:([A-Za-z]+):)?(\/{0,3})([0-9\-A-Za-z]+).([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/;
     const result = parse_url.exec(ur) || [];
-    console.log(result);
     enum EFieldIndex {
         URL = 0,
         SCHEME = 1,
@@ -85,7 +84,6 @@ export function getNotionSoDomain(ur: string): string | null {
     const parse_url =
         /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)\/([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/;
     const result = parse_url.exec(ur) || [];
-    console.log(result);
     enum EFieldIndex {
         URL = 0,
         SCHEME = 1,

@@ -2,7 +2,7 @@
  * @Author: Nicodemus nicodemusdu@gmail.com
  * @Date: 2022-10-22 16:16:27
  * @LastEditors: Nicodemus nicodemusdu@gmail.com
- * @LastEditTime: 2022-10-25 11:28:58
+ * @LastEditTime: 2022-10-25 17:28:38
  * @FilePath: /notion-statistics/pages/api/hello.ts
  * @Description:
  *
@@ -16,5 +16,5 @@ type Data = {
 };
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
-    res.status(200).json({ name: 'John Doe' });
+    res.status(200).json({ name: process.env.NEXT_PUBLIC_TARGET_URL as string });
 }

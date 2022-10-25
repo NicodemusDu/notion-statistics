@@ -2,7 +2,7 @@
  * @Author: Nicodemus nicodemusdu@gmail.com
  * @Date: 2022-10-22 16:16:27
  * @LastEditors: Nicodemus nicodemusdu@gmail.com
- * @LastEditTime: 2022-10-25 16:33:10
+ * @LastEditTime: 2022-10-25 17:50:35
  * @FilePath: /notion-statistics/pages/index.tsx
  * @Description:
  *
@@ -13,10 +13,15 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { urlParse, isEmbedInNotion, getNotionSoDomain, getNotionSiteDomain } from '../lib/notion-embed-access';
 import { useEffect } from 'react';
-
+import useSWR from 'swr';
 const Home: NextPage = () => {
+    const fetcher = (url: string) => fetch(url).then((r) => r.json());
+
+    const { data, error } = useSWR('/api/hello', fetcher);
+
     useEffect(() => {
-        const url = process.env.NEXT_PUBLIC_TARGET_URL || '';
+        // const url = process.env.NEXT_PUBLIC_TARGET_URL || '';
+        const url = error ? '' : data?.name;
         console.log(`target url = ${url}, is embed notion: ${isEmbedInNotion(url)}`);
         console.log(
             `notion.so = ${getNotionSoDomain('https://www.notion.so/nicodemusdu/fa242578bc2441de97310057192d6962')}`,
@@ -24,7 +29,7 @@ const Home: NextPage = () => {
         console.log(
             `notion.site = ${getNotionSiteDomain('https://seedao.notion.site/5443fbba0e694306a72d5271a9f1eb34')}`,
         );
-    });
+    }, [data, error]);
 
     return (
         <div className="flex min-h-screen flex-col items-center justify-center py-2">
@@ -79,7 +84,6 @@ const Home: NextPage = () => {
                         <p className="mt-4 text-xl">Instantly deploy your Next.js site to a public URL with Vercel.</p>
                     </a>
                 </div>
-                <iframe src="/posts/notion" width="300" height="380"></iframe>
             </main>
 
             <footer className="flex h-24 w-full items-center justify-center border-t">
@@ -97,3 +101,5 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+// export async function getServerSideProps(context) {}
